@@ -2,14 +2,28 @@ package com.oops.employeewage;
 
 public class EmployeeWage {
 
-    static final int PART_TIME_HOURS = 4;
-    static final int FULL_TIME_HOURS = 8;
+    private final String company;
+    private final int wagePerHour;
+    private final int maxWorkingDays;
+    private final int maxWorkingHours;
 
-    public static int computeEmployeeWage(
-            String company,
-            int wagePerHour,
-            int maxWorkingDays,
-            int maxWorkingHours) {
+    private int totalEmployeeWage;
+
+    private static final int PART_TIME_HOURS = 4;
+    private static final int FULL_TIME_HOURS = 8;
+
+    public EmployeeWage(String company,
+                          int wagePerHour,
+                          int maxWorkingDays,
+                          int maxWorkingHours) {
+
+        this.company = company;
+        this.wagePerHour = wagePerHour;
+        this.maxWorkingDays = maxWorkingDays;
+        this.maxWorkingHours = maxWorkingHours;
+    }
+
+    public void computeEmployeeWage() {
 
         int totalHours = 0;
         int totalDays = 0;
@@ -40,23 +54,13 @@ public class EmployeeWage {
             totalHours += workHours;
         }
 
-        int totalWage = totalHours * wagePerHour;
-
-        System.out.println("Company : " + company);
-        System.out.println("Total Days : " + totalDays);
-        System.out.println("Total Hours : " + totalHours);
-        System.out.println("Employee Wage : " + totalWage);
-        System.out.println("--------------------------------");
-
-        return totalWage;
+        totalEmployeeWage = totalHours * wagePerHour;
     }
 
-    public static void main(String[] args) {
+    public void displayEmployeeWage() {
 
-        System.out.println("Welcome to Employee Wage Computation Program");
-
-        computeEmployeeWage("DMart", 20, 20, 100);
-
-        computeEmployeeWage("Reliance", 25, 22, 120);
+        System.out.println("Company Name : " + company);
+        System.out.println("Total Employee Wage : " + totalEmployeeWage);
+        System.out.println("--------------------------------");
     }
 }
