@@ -2,22 +2,20 @@ package com.oops.employeewage;
 
 public class EmployeeWage {
 
-    // Class Variables
-    static final int WAGE_PER_HOUR = 20;
     static final int PART_TIME_HOURS = 4;
     static final int FULL_TIME_HOURS = 8;
 
-    static final int MAX_WORKING_DAYS = 20;
-    static final int MAX_WORKING_HOURS = 100;
-
-    // Class Method
-    public static int computeEmployeeWage() {
+    public static int computeEmployeeWage(
+            String company,
+            int wagePerHour,
+            int maxWorkingDays,
+            int maxWorkingHours) {
 
         int totalHours = 0;
         int totalDays = 0;
 
-        while (totalHours < MAX_WORKING_HOURS
-                && totalDays < MAX_WORKING_DAYS) {
+        while (totalHours < maxWorkingHours
+                && totalDays < maxWorkingDays) {
 
             totalDays++;
 
@@ -42,15 +40,23 @@ public class EmployeeWage {
             totalHours += workHours;
         }
 
-        return totalHours * WAGE_PER_HOUR;
+        int totalWage = totalHours * wagePerHour;
+
+        System.out.println("Company : " + company);
+        System.out.println("Total Days : " + totalDays);
+        System.out.println("Total Hours : " + totalHours);
+        System.out.println("Employee Wage : " + totalWage);
+        System.out.println("--------------------------------");
+
+        return totalWage;
     }
 
     public static void main(String[] args) {
 
         System.out.println("Welcome to Employee Wage Computation Program");
 
-        int totalWage = computeEmployeeWage();
+        computeEmployeeWage("DMart", 20, 20, 100);
 
-        System.out.println("Monthly Employee Wage = " + totalWage);
+        computeEmployeeWage("Reliance", 25, 22, 120);
     }
 }
