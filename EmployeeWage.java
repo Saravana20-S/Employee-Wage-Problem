@@ -7,7 +7,7 @@ public class EmployeeWage {
         System.out.println(
                 "Welcome to Employee Wage Computation Program");
 
-        EmpWageBuilder empWageBuilder =
+        IComputeEmpWage empWageBuilder =
                 new EmpWageBuilder();
 
         empWageBuilder.addCompanyEmpWage(
@@ -20,7 +20,5 @@ public class EmployeeWage {
                 "Infosys", 30, 24, 140);
 
         empWageBuilder.computeEmployeeWages();
-
-        empWageBuilder.displayEmployeeWages();
     }
-}
+}   
