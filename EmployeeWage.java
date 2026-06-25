@@ -2,65 +2,25 @@ package com.oops.employeewage;
 
 public class EmployeeWage {
 
-    private final String company;
-    private final int wagePerHour;
-    private final int maxWorkingDays;
-    private final int maxWorkingHours;
+    public static void main(String[] args) {
 
-    private int totalEmployeeWage;
+        System.out.println(
+                "Welcome to Employee Wage Computation Program");
 
-    private static final int PART_TIME_HOURS = 4;
-    private static final int FULL_TIME_HOURS = 8;
+        EmpWageBuilder empWageBuilder =
+                new EmpWageBuilder();
 
-    public EmployeeWage(String company,
-                          int wagePerHour,
-                          int maxWorkingDays,
-                          int maxWorkingHours) {
+        empWageBuilder.addCompanyEmpWage(
+                "DMart", 20, 20, 100);
 
-        this.company = company;
-        this.wagePerHour = wagePerHour;
-        this.maxWorkingDays = maxWorkingDays;
-        this.maxWorkingHours = maxWorkingHours;
-    }
+        empWageBuilder.addCompanyEmpWage(
+                "Reliance", 25, 22, 120);
 
-    public void computeEmployeeWage() {
+        empWageBuilder.addCompanyEmpWage(
+                "Infosys", 30, 24, 140);
 
-        int totalHours = 0;
-        int totalDays = 0;
+        empWageBuilder.computeEmployeeWages();
 
-        while (totalHours < maxWorkingHours
-                && totalDays < maxWorkingDays) {
-
-            totalDays++;
-
-            int empCheck = (int) (Math.random() * 3);
-
-            int workHours;
-
-            switch (empCheck) {
-
-                case 1:
-                    workHours = PART_TIME_HOURS;
-                    break;
-
-                case 2:
-                    workHours = FULL_TIME_HOURS;
-                    break;
-
-                default:
-                    workHours = 0;
-            }
-
-            totalHours += workHours;
-        }
-
-        totalEmployeeWage = totalHours * wagePerHour;
-    }
-
-    public void displayEmployeeWage() {
-
-        System.out.println("Company Name : " + company);
-        System.out.println("Total Employee Wage : " + totalEmployeeWage);
-        System.out.println("--------------------------------");
+        empWageBuilder.displayEmployeeWages();
     }
 }
