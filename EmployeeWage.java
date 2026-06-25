@@ -20,5 +20,19 @@ public class EmployeeWage {
                 "Infosys", 30, 24, 140);
 
         empWageBuilder.computeEmployeeWages();
+
+        System.out.println("\nQuery Result:");
+
+        System.out.println(
+                "DMart Wage = "
+                        + empWageBuilder.getTotalWage("DMart"));
+
+        System.out.println(
+                "Reliance Wage = "
+                        + empWageBuilder.getTotalWage("Reliance"));
+
+        System.out.println(
+                "Infosys Wage = "
+                        + empWageBuilder.getTotalWage("Infosys"));
     }
-}   
+}

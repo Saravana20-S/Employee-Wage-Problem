@@ -7,5 +7,7 @@ public interface IComputeEmpWage {
                            int maxWorkingDays,
                            int maxWorkingHours);
 
+
     void computeEmployeeWages();
+    int getTotalWage(String company);
 }
