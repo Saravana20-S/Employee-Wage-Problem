@@ -2,6 +2,7 @@ package com.oops.employeewage;
 
 public class EmployeeWage {
 
+    // Class Variables
     static final int WAGE_PER_HOUR = 20;
     static final int PART_TIME_HOURS = 4;
     static final int FULL_TIME_HOURS = 8;
@@ -9,14 +10,11 @@ public class EmployeeWage {
     static final int MAX_WORKING_DAYS = 20;
     static final int MAX_WORKING_HOURS = 100;
 
-
-    public static void main(String[] args) {
-
-        System.out.println("Welcome to Employee Wage Computation Program");
+    // Class Method
+    public static int computeEmployeeWage() {
 
         int totalHours = 0;
         int totalDays = 0;
-        int totalWage = 0;
 
         while (totalHours < MAX_WORKING_HOURS
                 && totalDays < MAX_WORKING_DAYS) {
@@ -42,12 +40,17 @@ public class EmployeeWage {
             }
 
             totalHours += workHours;
-            totalWage += workHours * WAGE_PER_HOUR;
         }
 
-        System.out.println("Total Days = " + totalDays);
-        System.out.println("Total Hours = " + totalHours);
-        System.out.println("Monthly Wage = " + totalWage);
+        return totalHours * WAGE_PER_HOUR;
     }
 
+    public static void main(String[] args) {
+
+        System.out.println("Welcome to Employee Wage Computation Program");
+
+        int totalWage = computeEmployeeWage();
+
+        System.out.println("Monthly Employee Wage = " + totalWage);
+    }
 }
