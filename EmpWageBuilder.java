@@ -1,17 +1,17 @@
 package com.oops.employeewage;
 
+import java.util.ArrayList;
+
 public class EmpWageBuilder implements IComputeEmpWage {
 
     private static final int PART_TIME_HOURS = 4;
     private static final int FULL_TIME_HOURS = 8;
 
-    private CompanyEmpWage[] companyEmpWages;
-    private int numberOfCompanies;
+    private ArrayList<CompanyEmpWage> companyEmpWageList;
 
     public EmpWageBuilder() {
 
-        companyEmpWages = new CompanyEmpWage[10];
-        numberOfCompanies = 0;
+        companyEmpWageList = new ArrayList<>();
     }
 
     @Override
@@ -20,14 +20,14 @@ public class EmpWageBuilder implements IComputeEmpWage {
                                   int maxWorkingDays,
                                   int maxWorkingHours) {
 
-        companyEmpWages[numberOfCompanies] =
+        CompanyEmpWage companyEmpWage =
                 new CompanyEmpWage(
                         company,
                         wagePerHour,
                         maxWorkingDays,
                         maxWorkingHours);
 
-        numberOfCompanies++;
+        companyEmpWageList.add(companyEmpWage);
     }
 
     private int computeEmployeeWage(
@@ -68,10 +68,7 @@ public class EmpWageBuilder implements IComputeEmpWage {
     @Override
     public void computeEmployeeWages() {
 
-        for (int i = 0; i < numberOfCompanies; i++) {
-
-            CompanyEmpWage company =
-                    companyEmpWages[i];
+        for (CompanyEmpWage company : companyEmpWageList) {
 
             company.totalEmployeeWage =
                     computeEmployeeWage(company);
