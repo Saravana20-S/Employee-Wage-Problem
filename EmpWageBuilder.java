@@ -59,6 +59,11 @@ public class EmpWageBuilder implements IComputeEmpWage {
                     workHours = 0;
             }
 
+            int dailyWage =
+                    workHours * company.wagePerHour;
+
+            company.dailyWages.add(dailyWage);
+
             totalHours += workHours;
         }
 
@@ -68,12 +73,19 @@ public class EmpWageBuilder implements IComputeEmpWage {
     @Override
     public void computeEmployeeWages() {
 
-        for (CompanyEmpWage company : companyEmpWageList) {
+        for (CompanyEmpWage company
+                : companyEmpWageList) {
 
             company.totalEmployeeWage =
                     computeEmployeeWage(company);
 
             System.out.println(company);
+
+            System.out.println(
+                    "Daily Wages : "
+                            + company.dailyWages);
+
+            System.out.println("-------------------");
         }
     }
 }
